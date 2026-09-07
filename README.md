@@ -50,17 +50,16 @@ public class HelloWorld {
 #object-class02
 public class HelloWorld {
     public static void main(String[] args) {
-      
-    	long[] fib = new long[20];
-        fib[0] = 1;
-        fib[1] = 1;
-        for (int i = 2; i < 20; i++) {
-            fib[i] = fib[i - 1] + fib[i - 2];
-        }
-
-    
-        for (int i = 0; i < 20; i++) {
-            System.out.print(fib[i] + " ");
+        long a = 1;
+        long b = 1;
+        
+        System.out.print(a + " " + b + " ");
+        
+        for(int i = 3; i <= 20; i++) {
+            long next = a + b;
+            System.out.print(next + " ");
+            a = b;
+            b = next;
         }
         System.out.println("\n");
     }
