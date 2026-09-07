@@ -1,5 +1,6 @@
 # object-class01
 ### mondai 01
+```java
 public class HelloWorld {
     public static void main(String[] args) {
       
