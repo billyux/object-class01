@@ -71,7 +71,7 @@ public class HelloWorld {
 ```
 <img width="605" height="327" alt="스크린샷 2026-09-07 152000" src="https://github.com/user-attachments/assets/dfab2b7a-9587-4977-bfca-2650067c8241" />
 ### mondai 03
-``java
+```java
 public class HelloWorld {
     public static void main(String[] args) {
     	
@@ -91,7 +91,7 @@ public class HelloWorld {
         System.out.println("\n");
     }
 }
-``
+```
 <img width="612" height="358" alt="스크린샷 2026-09-07 152706" src="https://github.com/user-attachments/assets/57affec6-cd84-4892-8b38-86a2d8563c00" />
 ### mondai 04
 ```java
