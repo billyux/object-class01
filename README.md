@@ -70,6 +70,7 @@ public class HelloWorld {
 }
 ```
 <img width="605" height="327" alt="스크린샷 2026-09-07 152000" src="https://github.com/user-attachments/assets/dfab2b7a-9587-4977-bfca-2650067c8241" />
+
 ### mondai 03
 ```java
 public class HelloWorld {
