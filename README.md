@@ -193,6 +193,7 @@ public class HelloWorld {
 }
 ```
 <img width="1530" height="696" alt="스크린샷 2026-09-08 152721" src="https://github.com/user-attachments/assets/07088f93-4032-43df-9da9-10394d7342da" />
+
 ### mondai 06
 ```java
 public class HelloWorld {
