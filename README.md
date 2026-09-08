@@ -193,5 +193,26 @@ public class HelloWorld {
 }
 ```
 <img width="1530" height="696" alt="스크린샷 2026-09-08 152721" src="https://github.com/user-attachments/assets/07088f93-4032-43df-9da9-10394d7342da" />
+### mondai 06
+```java
+public class HelloWorld {
+    public static void main(String[] args) {
+        int n=6;
+         
+    for(int i=0; i<n;i++)
+        {
+            for( int j=0; j<n-i-1;j++){
+            System.out.printf(" ");}
+              int a =1;
+            for(int k=0;k<=i;k++){
+                System.out.printf("%-4d",a);
+                    a=a*(i-k)/(k+1);
+            }
+                 System.out.println();
+        }
+    }
+}
+```
+<img width="1305" height="592" alt="스크린샷 2026-09-08 160146" src="https://github.com/user-attachments/assets/905ebc52-b5bb-42c7-a371-390603caf260" />
 
 
