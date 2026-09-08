@@ -110,3 +110,43 @@ public class HelloWorld {
 ```
 <img width="634" height="176" alt="스크린샷 2026-09-07 152843" src="https://github.com/user-attachments/assets/d3acdcb5-c50f-4f34-afc1-77212d18a8e2" />
 
+### mondai 05
+```java
+public class HelloWorld {
+    public static void main(String[] args) {
+      
+        int i;
+     double j=0;
+        int h=0;
+  
+        double a=0;
+      
+        for(i=1; i<1000;i++) {
+        
+        	if(i%2==1){
+                
+                j=4.0/(h*2+1);
+                h++;
+               a+=j;
+               
+                    
+            }
+            
+        	if(i%2==0){
+                
+              j=4.0/(h*2+1);
+                h++;
+              a-=j;
+                
+                    
+            }
+            
+        }
+        
+            System.out.printf("%.4f",a);
+            
+             
+        	
+    }
+}
+```
