@@ -110,7 +110,7 @@ public class HelloWorld {
 ```
 <img width="634" height="176" alt="스크린샷 2026-09-07 152843" src="https://github.com/user-attachments/assets/d3acdcb5-c50f-4f34-afc1-77212d18a8e2" />
 
-### mondai 05
+### mondai 05-1
 ```java
 public class HelloWorld {
     public static void main(String[] args) {
@@ -151,4 +151,47 @@ public class HelloWorld {
 }
 ```
 <img width="1543" height="725" alt="스크린샷 2026-09-08 150033" src="https://github.com/user-attachments/assets/166225c0-c1cd-477c-ab76-4902f1c8475c" />
+
+### mondai 05-2
+```java
+public class HelloWorld {
+    public static void main(String[] args) {
+      
+        int i;
+     double j=0;
+        int h=0;
+        double k=0;
+        double a=0;
+      
+        for(i=0; i<1000;i++) {
+        
+        	if(i%2==0){
+             k = Math.pow(3, i); 
+                j=(1.0* Math.sqrt(12))/(k*(h*2+1));
+                h++;
+               a+=j;
+               
+                    
+            }
+            
+        	if(i%2==1){
+                 k = Math.pow(3, i); 
+              j=(1.0* Math.sqrt(12))/(k*(h*2+1));
+                h++;
+              a-=j;
+                
+                    
+            }
+            
+        }
+        
+            System.out.printf("%.4f",a);
+            
+             
+        	
+    }
+}
+```
+<img width="1530" height="696" alt="스크린샷 2026-09-08 152721" src="https://github.com/user-attachments/assets/07088f93-4032-43df-9da9-10394d7342da" />
+
 
