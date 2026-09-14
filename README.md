@@ -216,4 +216,42 @@ public class HelloWorld {
 ```
 <img width="1305" height="592" alt="스크린샷 2026-09-08 160146" src="https://github.com/user-attachments/assets/905ebc52-b5bb-42c7-a371-390603caf260" />
 
+### mondai 07
+```java
+public class Helloworld {
+    public static void main(String[] args) {
 
+        int[] data = new int[20];
+
+       
+        for (int i = 0; i < 20; i++) {
+            data[i] = (int)(Math.random() * 100);
+        }
+
+      
+        for (int a = 0; a < data.length - 1; a++) {
+
+            
+            int min = a;
+
+          
+            for (int b = a + 1; b < data.length; b++) {
+                if (data[b] < data[min]) {
+                    min = b;
+                }
+            }
+
+          
+            int temp = data[a];
+            data[a] = data[min];
+            data[min] = temp;
+        }
+
+    
+        for (int i = 0; i < data.length; i++) {
+            System.out.println(data[i]);
+        }
+    }
+}
+```
+<img width="708" height="545" alt="image" src="https://github.com/user-attachments/assets/4426feff-16cf-455a-93e5-9e1c03cba208" />
