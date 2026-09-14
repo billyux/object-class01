@@ -255,3 +255,43 @@ public class Helloworld {
 }
 ```
 <img width="708" height="545" alt="image" src="https://github.com/user-attachments/assets/4426feff-16cf-455a-93e5-9e1c03cba208" />
+
+### mondai 08
+```java
+public class helloworld {
+    public static void main(String[] args) {
+
+        int score[][] = new int[30][5];
+
+        // 점수 생성
+        for (int i = 0; i < 30; i++) {
+            for (int j = 0; j < 4; j++) {
+                score[i][j] = (int)(Math.random() * 101);
+            }
+        }
+
+        // 총점 계산
+        for (int i = 0; i < 30; i++) {
+            score[i][4] = score[i][0]
+                        + score[i][1]
+                        + score[i][2]
+                        + score[i][3];
+        }
+
+        // 출력
+        System.out.println("번호\t국어\t영어\t수학\t과학\t총점");
+
+        for (int i = 0; i < 30; i++) {
+            System.out.printf("%d\t%d\t%d\t%d\t%d\t%d%n",
+                    i + 1,
+                    score[i][0],
+                    score[i][1],
+                    score[i][2],
+                    score[i][3],
+                    score[i][4]);
+        }
+    }
+}
+```
+<img width="364" height="511" alt="image" src="https://github.com/user-attachments/assets/1df0e043-a329-4817-9716-ed8894db664c" />
+
