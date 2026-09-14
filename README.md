@@ -295,3 +295,51 @@ public class helloworld {
 ```
 <img width="364" height="511" alt="image" src="https://github.com/user-attachments/assets/1df0e043-a329-4817-9716-ed8894db664c" />
 
+### mondai 10
+```java
+public class Helloworld {
+    public static void main(String[] args) {
+        int arrayCount = 1000;
+        int maxValue = 100;
+        int binSize = 10;
+        int displayScale = 5;
+        if (args.length >= 4) {
+            arrayCount = Integer.parseInt(args[0]);
+            maxValue = Integer.parseInt(args[1]);
+            binSize = Integer.parseInt(args[2]);
+            displayScale = Integer.parseInt(args[3]);
+        }
+
+        int[] data = new int[arrayCount];
+
+        for (int i = 0; i < arrayCount; i++) {
+            data[i] = (int) (Math.random() * maxValue);
+        }
+
+        int binCount = (maxValue + binSize - 1) / binSize;
+        int[] histogram = new int[binCount];
+
+        for (int i = 0; i < arrayCount; i++) {
+            int bin = data[i] / binSize;
+            histogram[bin]++;
+        }
+
+        for (int i = 0; i < binCount; i++) {
+            int start = i * binSize;
+            int end = Math.min(start + binSize - 1, maxValue - 1);
+
+            System.out.printf("%2d~%-2d\t", start, end);
+
+            int count = histogram[i] / displayScale;
+
+            for (int j = 0; j < count; j++) {
+                System.out.print("#");
+            }
+
+            System.out.println();
+        }
+    }
+}
+```
+<img width="375" height="311" alt="image" src="https://github.com/user-attachments/assets/8e406536-625d-42d7-b22f-d1c4955cfb63" />
+
