@@ -343,4 +343,52 @@ public class Helloworld {
 ```
 <img width="375" height="311" alt="image" src="https://github.com/user-attachments/assets/8e406536-625d-42d7-b22f-d1c4955cfb63" />
 
+### mondai 11
+```java
+public class HELLOWORLD {
+public static void main(String[] args) {//문자열의 타입      
+		int array_count;
+		if(args.length !=1)
+			return;
+		array_count = Integer.parseInt(args[0]);//이걸 하는 이유는 기존 string[]args은 문자열 이름을 저장하는데 Integer.parseInt(args[0])은 정수형으로 전환 args[0에 인자값을 바탕으로 배열의 크기를 정한다는 뜻 
+		int[] arr = new int[array_count];// 배열의 크기(인자값)을 바탕으로 새로운 배열 생성
+		for (int i=0; i<array_count; i++) {
+			arr[i] = (int) (Math.random()*100);
+		}
+		for (int i=0; i<array_count; i++) {
+			System.out.print(arr[i] + " ");  
+		}
+		System.out.println();
+		double sum = 0;
+		for (int i=0; i<array_count; i++) {
+			sum+=arr[i];
+		}
+		System.out.printf("arithematic mean : = %f\n", sum/array_count);
+		double prod = 1;
+		for (int i=0; i<array_count; i++) {
+			prod*=arr[i];
+		}
+		System.out.printf("geometric mean : = %f\n", Math.pow(prod, 1.0/array_count));
+    double six =1;
+    for (int i=0; i<array_count; i++){
+        six+=1.0/arr[i];//(double)1이나 1.0을 사용해야함 아니면 정수 나눗셈이 되어버림 0만출력
+        
+    }  System.out.printf("hamonoic mean : = %f\n", array_count/six );
+    int[] sortedArr = arr.clone();
+        java.util.Arrays.sort(sortedArr);
+        double median;
+        if (array_count % 2 == 0) {
+            median = (sortedArr[array_count / 2 - 1] + sortedArr[array_count / 2]) / 2.0;
+        } else {
+            median = sortedArr[array_count / 2];
+        }
+        System.out.printf("median           : = %f\n", median);
+		
+	}
+}
+```
+<img width="1566" height="327" alt="image" src="https://github.com/user-attachments/assets/1d1fa480-693d-4096-b6b0-de8007cc5a5b" />
+
+
+
 
