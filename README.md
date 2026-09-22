@@ -389,6 +389,7 @@ public static void main(String[] args) {//문자열의 타입
 ```
 <img width="1566" height="327" alt="image" src="https://github.com/user-attachments/assets/1d1fa480-693d-4096-b6b0-de8007cc5a5b" />
 
+### mondai 13
 ```java
 import java.util.Scanner;
 public class miniCalculator {
