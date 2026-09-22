@@ -389,6 +389,31 @@ public static void main(String[] args) {//문자열의 타입
 ```
 <img width="1566" height="327" alt="image" src="https://github.com/user-attachments/assets/1d1fa480-693d-4096-b6b0-de8007cc5a5b" />
 
+```java
+import java.util.Scanner;
+public class miniCalculator {
+  public static void main(String[] args) {
+       Scanner scanner = new Scanner(System.in);//scanner라는 클래스 사용해서 키보드 입력을 받음
+    while(true) {// 종료 조건없이 사용자가 새로운 새 계산식을 입력하도록 유도
+    
+      String inputString = scanner.nextLine();//한 줄 입력 전체를 문자열로 받음
+      System.out.println(inputString);
+      String[] arr = inputString.split(" "); 
+      int result= Integer.parseInt(arr[0]);
+        for(int i=1; i<arr.length; i+=2){
+            String op=arr[i];
+            int num = Integer .parseInt(arr[i+1]);
+            if(op.equals("+"))result+=num;
+             if(op.equals("-"))result-=num;
+             if(op.equals("#"))result*=num;
+             if(op.equals("/"))result/=num;
+            
+        }
+      System.out.println(result);
 
-
+		
+	}
+  }
+}
+```
 
