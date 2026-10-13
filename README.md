@@ -417,4 +417,163 @@ public class miniCalculator {
   }
 }
 ```
+<img width="1058" height="313" alt="image" src="https://github.com/user-attachments/assets/d9e84151-fedf-40ee-a9e5-c754df6d97d4" />
+
+### mondai 14
+```java
+public class NumbersTest {
+    public static void main(String[] args) {
+        int size = 100;
+        int data[] = new int[size];
+        for (int i = 0; i < size; i++)
+            data[i] = (int) (Math.random() * 100) + 1;   // 1~100 (0이 있으면 기하·조화평균이 0이 됨)
+ 
+        HelloWorld obj = new HelloWorld(data);
+ 
+        System.out.printf("Arithmetic Mean : %5.2f\n", obj.getArithmaticMean());
+        System.out.printf("Geometric Mean  : %5.2f\n", obj.getGeometricMean());
+        System.out.printf("Harmonic Mean   : %5.2f\n", obj.getHarmonicMean());
+        System.out.printf("Median          : %d\n", obj.getMedian());
+ 
+        obj.printFrequencyTable(0, 100, 10);
+        obj.drawHistogram(0, 100, 10, 10);   // min, max, bin_size, display_scale
+    }
+}
+```
+```java
+public class HelloWorld {
+    int num[];
+ 
+    HelloWorld(int num[]) {
+        this.num = num;
+    }
+ 
+    // 합계
+    double getTotal() {
+        double sum = 0;
+        for (int i = 0; i < num.length; i++) sum += num[i];
+        return sum;
+    }
+ 
+    // 산술평균 = 합 / n
+    double getArithmaticMean() {
+        return getTotal() / num.length;
+    }
+ 
+    // 조화평균 = n / (1/x1 + 1/x2 + ... + 1/xn)
+    // 값 중에 0이 있으면 1/0 이 되므로 0을 반환
+    double getHarmonicMean() {
+        double sum = 0;
+        for (int i = 0; i < num.length; i++) {
+            if (num[i] == 0) return 0;
+            sum += 1.0 / num[i];
+        }
+        return num.length / sum;
+    }
+ 
+    // 기하평균 = (x1 * x2 * ... * xn)^(1/n)
+    // 그냥 곱하면 오버플로가 나므로 로그의 평균을 구한 뒤 exp로 되돌림
+    // 값 중에 0이 있으면 곱이 0이므로 0을 반환
+    double getGeometricMean() {
+        double logSum = 0;
+        for (int i = 0; i < num.length; i++) {
+            if (num[i] == 0) return 0;
+            logSum += Math.log(num[i]);
+        }
+        return Math.exp(logSum / num.length);
+    }
+ 
+    // 중앙값: 정렬 후 가운데 값 (짝수 개면 가운데 두 값의 평균)
+    int getMedian() {
+        sorting();
+        int n = num.length;
+        if (n % 2 == 1) return num[n / 2];
+        return (num[n / 2 - 1] + num[n / 2]) / 2;
+    }
+ 
+    // 오름차순 정렬 (버블 정렬)
+    void sorting() {
+        for (int i = 0; i < num.length - 1; i++) {
+            for (int j = 0; j < num.length - 1 - i; j++) {
+                if (num[j] > num[j + 1]) {
+                    int temp = num[j];
+                    num[j] = num[j + 1];
+                    num[j + 1] = temp;
+                }
+            }
+        }
+    }
+ 
+    // 각 계급(bin)에 속하는 값의 개수(도수)를 셈
+    int[] getFrequency(int start, int end, int binCount) {
+        int[] freq = new int[binCount];
+        double binSize = (double) (end - start) / binCount;
+        for (int i = 0; i < num.length; i++) {
+            if (num[i] < start || num[i] > end) continue;   // 범위 밖은 제외
+            int idx = (int) ((num[i] - start) / binSize);
+            if (idx == binCount) idx--;                      // end 값은 마지막 계급에 포함
+            freq[idx]++;
+        }
+        return freq;
+    }
+ 
+    // 도수분포표: 계급 / 도수 / 상대도수 / 누적도수
+    void printFrequencyTable(int start, int end, int binCount) {
+        int[] freq = getFrequency(start, end, binCount);
+        double binSize = (double) (end - start) / binCount;
+        int cumulative = 0;
+ 
+        System.out.println("\n[도수분포표]");
+        System.out.println("   계급        도수   상대도수   누적도수");
+        System.out.println("------------------------------------------");
+        for (int i = 0; i < binCount; i++) {
+            cumulative += freq[i];
+            int low = (int) (start + i * binSize);
+            int high = (int) (start + (i + 1) * binSize);
+            System.out.printf("%3d 이상 %3d 미만 %4d %9.2f %9d%n",
+                    low, high, freq[i], (double) freq[i] / num.length, cumulative);
+        }
+        System.out.println("------------------------------------------");
+        System.out.printf("   합계         %4d %9.2f%n", cumulative, (double) cumulative / num.length);
+    }
+ 
+    
+    void drawHistogram(int start, int end, int binCount, int scale) {
+        int[] freq = getFrequency(start, end, binCount);
+        double binSize = (double) (end - start) / binCount;
+ 
+        int max = 0;
+        for (int f : freq) if (f > max) max = f;
+        if (max == 0) {
+            System.out.println("범위 안에 데이터가 없습니다.");
+            return;
+        }
+ 
+        // 각 막대의 높이 계산
+        int[] height = new int[binCount];
+        for (int i = 0; i < binCount; i++)
+            height[i] = (int) Math.round((double) freq[i] * scale / max);
+ 
+        System.out.println("\n[히스토그램]");
+        for (int row = scale; row >= 1; row--) {
+            for (int i = 0; i < binCount; i++)
+                System.out.print(height[i] >= row ? " ### " : "     ");
+            System.out.println();
+        }
+ 
+        // x축
+        for (int i = 0; i < binCount; i++) System.out.print("-----");
+        System.out.println();
+ 
+        // 도수
+        for (int i = 0; i < binCount; i++) System.out.printf("%4d ", freq[i]);
+        System.out.println("  ← 도수");
+ 
+        // 계급 시작값
+        for (int i = 0; i < binCount; i++) System.out.printf("%4d ", (int) (start + i * binSize));
+        System.out.println("  ← 계급");
+    }
+}
+ ```
+<img width="1269" height="437" alt="image" src="https://github.com/user-attachments/assets/6bb66868-0f52-4dfc-ab4d-d6ce7f5f7ecb" />
 
